@@ -1,0 +1,10 @@
+{
+  "body.name": "Pocket Tee",
+  "body.price": 10.00,
+  "body.images": [
+    "/static/pocketT-Front.jpg",
+    "/static/pocketT-back.jpg"
+  ],
+  "body.category": "Shirts",
+  "body.purchaseUrl": "https://example.com/pocket-tee"
+}

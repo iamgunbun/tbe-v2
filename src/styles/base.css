@@ -1,0 +1,688 @@
+/* Basic Reset and Global Styles */
+:root {
+  --background-color: #0c0a09; /* Default to dark */
+  --text-color: #fff;
+  --secondary-text-color: #a1a1aa;
+  --accent-color: #ffffff; /* Changed from red to white */
+  --card-background-color: #18181b;
+  --header-overlay-color: rgba(12, 10, 9, 0.7);
+  --header-content-bg: rgba(24, 24, 27, 0.5);
+  --nav-bg: rgba(12, 10, 9, 0.7);
+}
+
+.light {
+  --background-color: #fff;
+  --text-color: #222222; /* Changed to a dark gray to make the white accent color visible */
+  --secondary-text-color: #52525b;
+  --accent-color: #ffffff; /* Changed from red to white */
+  --card-background-color: #e4e4e7;
+  --header-overlay-color: rgba(255, 255, 255, 0.7);
+  --header-content-bg: rgba(255, 255, 255, 0.5);
+  --nav-bg: rgba(255, 255, 255, 0.7);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Overall Layout */
+.main-container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content-wrapper {
+  /* To ensure content is centered within the main container */
+}
+
+/* === Nav Component === */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 1rem;
+  backdrop-filter: blur(8px);
+  background-color: var(--nav-bg);
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 72rem;
+  margin: auto;
+  gap: 1rem;
+}
+
+/* New CSS for centered nav on larger screens */
+@media (min-width: 768px) {
+  .nav-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-left {
+    /* For spacing, can be used for other elements later */
+  }
+
+  .nav-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+.nav-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  text-align: center; /* Ensures logo is centered in its grid column */
+}
+
+.nav-logo-image {
+  height: 50px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .nav-links {
+    /* Resets for larger screens if needed */
+  }
+}
+
+.nav-link-item {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--secondary-text-color);
+  text-decoration: none;
+  transition-property: color;
+  transition-duration: 300ms;
+}
+
+.nav-link-item:hover {
+  color: var(--text-color);
+}
+
+.theme-toggle-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* === Header Component with Video === */
+.header-video {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.header-video-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -2;
+}
+
+.header-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--header-overlay-color);
+  backdrop-filter: blur(4px);
+  z-index: -1;
+}
+
+.header-content {
+  position: relative;
+  z-index: 10;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  backdrop-filter: blur(16px);
+  background-color: var(--header-content-bg);
+  max-width: 48rem;
+}
+
+.header-logo {
+  max-width: 40%;
+  height: auto;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+}
+
+.header-logo-subtitle {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--text-color);
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75rem 2rem;
+  background-color: var(--accent-color);
+  color: #000;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 9999px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  transition-property: background-color, transform;
+  transition-duration: 300ms;
+}
+
+.cta-button:hover {
+  background-color: #cccccc; /* Changed to a lighter gray for hover */
+  transform: scale(1.05);
+}
+
+/* === Section Title Styling === */
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+}
+
+/* === Tour Dates Component === */
+.tour-section {
+  padding: 5rem 1rem;
+}
+
+.tour-list-container {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tour-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--card-background-color);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  transition-property: transform;
+  transition-duration: 300ms;
+}
+
+.tour-item:hover {
+  transform: scale(1.02);
+}
+
+@media (min-width: 768px) {
+  .tour-item {
+    flex-direction: row;
+  }
+}
+
+.tour-item-details {
+  flex-grow: 1;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .tour-item-details {
+    text-align: left;
+    margin-bottom: 0;
+  }
+}
+
+.tour-item-date {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.tour-item-city {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.tour-item-venue {
+  display: block;
+  font-size: 1rem;
+  color: var(--secondary-text-color);
+}
+
+.tour-tickets-button {
+  padding: 0.5rem 1.5rem;
+  background-color: var(--accent-color);
+  color: #000;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 9999px;
+  transition-property: background-color;
+  transition-duration: 300ms;
+}
+
+.tour-tickets-button:hover {
+  background-color: #cccccc;
+}
+
+/* === Merch Preview Component === */
+.merch-section {
+  padding: 5rem 1rem;
+  text-align: center;
+}
+
+.merch-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .merch-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .merch-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.merch-item {
+  background-color: var(--card-background-color);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition-property: transform;
+  transition-duration: 300ms;
+}
+
+.merch-item:hover {
+  transform: scale(1.05);
+}
+
+.merch-item-image {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
+}
+
+.merch-item-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.merch-item-price {
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.merch-add-to-cart {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: var(--accent-color);
+  color: #000;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition-property: background-color;
+  transition-duration: 300ms;
+}
+
+.merch-add-to-cart:hover {
+  background-color: #cccccc;
+}
+
+/* === Merch Page Component === */
+.merch-page-section {
+  padding: 5rem 1rem;
+}
+
+.merch-category {
+  margin-bottom: 3rem;
+}
+
+.category-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  color: var(--accent-color);
+}
+
+
+/* === Footer Component === */
+.footer {
+  padding: 3rem;
+  background-color: var(--card-background-color);
+  text-align: center;
+}
+
+.social-links-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-link-item {
+  color: var(--secondary-text-color);
+  transition-property: color;
+  transition-duration: 300ms;
+}
+
+.social-link-item:hover {
+  color: var(--accent-color);
+}
+
+.footer-text {
+  font-size: 0.875rem;
+  color: var(--secondary-text-color);
+}
+
+/* === All Merch Page Component === */
+
+.all-merch-section {
+  padding: 5rem 1rem;
+}
+
+.merch-page-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.merch-sidebar {
+  min-width: 12rem;
+  background-color: var(--card-background-color);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--accent-color);
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-button {
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 0;
+  background: none;
+  border: none;
+  color: var(--secondary-text-color);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.category-button:hover,
+.category-button.active {
+  color: var(--text-color);
+}
+
+.merch-grid-full {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.merch-item-full {
+  background-color: var(--card-background-color);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.merch-item-full:hover {
+  transform: scale(1.02);
+}
+
+.merch-item-image {
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
+}
+
+.merch-item-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.merch-item-price {
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.merch-placeholder {
+  color: var(--secondary-text-color);
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.merch-add-to-cart-full {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--accent-color);
+  color: #000;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.merch-add-to-cart-full:hover {
+  background-color: #cccccc;
+}
+
+.no-items-message {
+  text-align: center;
+  width: 100%;
+  font-size: 1.5rem;
+  color: var(--secondary-text-color);
+}
+
+
+/* New styles for Merch Image Carousel */
+
+.merch-image-container {
+  position: relative;
+  width: 100%;
+  height: 15rem;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
+}
+
+.merch-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.merch-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s;
+}
+
+.merch-nav-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.merch-nav-button.left {
+  left: 0.5rem;
+  border-radius: 50%;
+}
+
+.merch-nav-button.right {
+  right: 0.5rem;
+  border-radius: 50%;
+}
+/* === Videos Component === */
+
+.videos-section {
+  padding: 5rem 1rem;
+  text-align: center;
+}
+
+.main-video-container {
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+  background-color: var(--card-background-color);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.main-video-iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.main-video-details {
+  padding: 1rem;
+  text-align: left;
+}
+
+.main-video-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.main-video-description {
+  font-size: 1rem;
+  color: var(--secondary-text-color);
+  margin-bottom: 1rem;
+}
+
+.youtube-link {
+  display: inline-block;
+  color: var(--accent-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.youtube-link:hover {
+  color: #cccccc;
+}
+
+.other-videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.other-video-card {
+  background-color: var(--card-background-color);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.other-video-card:hover {
+  transform: translateY(-5px);
+}
+
+.other-video-thumbnail {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.other-video-card h4 {
+  padding: 1rem;
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
